@@ -1,0 +1,14 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v*
+jobs:
+  upload-dist-folder:
+    name: Upload 'dist' folder
+    - uses: actions/upload-artifact@v4
+      with:
+        name: dist
+        path: dist

@@ -14,6 +14,10 @@ services:
       cd app
       npm install
       npm run build
+
+      # Copy dist files
+      cp index.html ../dist/
+      cp -r node_modules ../dist/
     working_dir: /WebPlotDigitizer
     volumes:
       - ./:/WebPlotDigitizer
