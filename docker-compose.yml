@@ -1,0 +1,19 @@
+version: "3.9"
+networks:
+  default:
+    name: web-plot-digitizer
+services:
+  app:
+    container_name: web-plot-digitizer-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: ["/bin/sh","-c"]
+    command:
+    - |
+      cd app
+      npm install
+      npm run build
+    working_dir: /WebPlotDigitizer
+    volumes:
+      - ./:/WebPlotDigitizer
