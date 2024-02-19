@@ -4,7 +4,7 @@ on:
     branches:
       - master
 jobs:
-  deploy-to-npm:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -26,7 +26,6 @@ jobs:
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: cd dist
-      - run: npm publish --access public
+      - run: cd dist && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
