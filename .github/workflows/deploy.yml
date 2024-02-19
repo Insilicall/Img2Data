@@ -4,11 +4,17 @@ on:
     branches:
       - master
 jobs:
-  upload-dist-folder:
+  deploy-to-npm:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build docker image
+        run: docker compose up
+
+      - name: Copy 'dist' files
+        run: echo 'teste' > ./dist/teste.txt
+
       - name: Upload 'dist' folder
         uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: ./dist/**/*
