@@ -1,1 +1,1 @@
-../INDEX.md
+../index.md
