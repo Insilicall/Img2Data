@@ -12,7 +12,7 @@ RUN apt-get update \
        dpkg-reconfigure --frontend noninteractive tzdata
 
 # Create app directory
-WORKDIR /WebPlotDigitizer
+WORKDIR /Img2Data
 
 # Bundle app source
 COPY . .
