@@ -26,3 +26,6 @@
 
 # general
 .DS_Store
+
+# Compiled output
+/dist
