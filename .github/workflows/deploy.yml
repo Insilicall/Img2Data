@@ -1,14 +1,14 @@
-name: Deploy
+name: Deploy to NPM
 on:
   push:
     branches:
       - master
-    tags:
-      - v*
 jobs:
   upload-dist-folder:
-    name: Upload 'dist' folder
-    - uses: actions/upload-artifact@v4
-      with:
-        name: dist
-        path: dist
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload 'dist' folder
+        uses: actions/checkout@v4
+        with:
+          name: dist
+          path: dist
