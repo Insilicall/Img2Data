@@ -1,6 +1,6 @@
 {
   "name": "@insilicall/img-2-data",
-  "version": "0.0.1",
+  "version": "0.0.1-rc-3",
   "description": "",
   "main": "img-2-data.js",
   "scripts": {
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Insilicall/Img2Data/issues"
   },
-  "homepage": "https://github.com/Insilicall/Img2Data#readme"
+  "homepage": "https://github.com/Insilicall/Img2Data#readme",
+  "dependencies": {
+    "pdfjs-dist": "~2.9.359",
+    "tarballjs": "https://github.com/ankitrohatgi/tarballjs.git"
+  }
 }
