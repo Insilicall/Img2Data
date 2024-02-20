@@ -27,9 +27,6 @@
 # general
 .DS_Store
 
-# Img2Data
-!/app/img-2-data.js
-
 # Compiled output
 /dist
 !/dist/package.json

@@ -1,8 +1,8 @@
 {
-  "name": "@insilicall/img-2-data",
-  "version": "0.0.1-rc-3",
+  "name": "@insilicall/img2data",
+  "version": "0.0.1",
   "description": "",
-  "main": "img-2-data.js",
+  "main": "",
   "scripts": {
     "build": "",
     "test": "echo \"Error: no test specified\" && exit 1"
