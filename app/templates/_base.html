@@ -236,7 +236,7 @@
     <div id="allContainer">
         <!-- toolbar + graphics -->
         <div id="mainContainer">
-            <div id="topContainer">
+            <div id="topContainer" style="display: none">
                 <div id="menuButtonsContainer">{% include "_menubar.html" %}</div>
 
 
@@ -260,8 +260,8 @@
 
             </div>
 
-            <div style="display: flex; display: none;">
-                <div id="left-side-container" style="width:200px; flex: 0 0 169px;">
+            <div style="display: flex;">
+                <div id="left-side-container" style="width:200px; flex: 0 0 169px; display: none;">
                     <!-- tree control -->
                     {% include "_tree.html" %}
                 </div>
