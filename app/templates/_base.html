@@ -33,6 +33,7 @@
     <title>WebPlotDigitizer - Copyright 2010-2024 Ankit Rohatgi</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="insilicall-buttons.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="widgets.css" type="text/css" media="screen" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     {% block scripts %}{% endblock %}
@@ -239,7 +240,7 @@
                 <div id="menuButtonsContainer">{% include "_menubar.html" %}</div>
 
 
-                <div id="topToolbarContainer">
+                <div id="topToolbarContainer" style="display: none">
                     <!-- controls that show on top -->
                     <div style="position:relative;">
                         <!-- Extra toolbars go here -->
@@ -247,7 +248,7 @@
                     </div>
                 </div>
 
-                <div style="display: inline-flex; justify-content: space-between; width: 200px; position: absolute; top: 9px; right: 290px;">
+                <div style="display: inline-flex; justify-content: space-between; width: 200px; position: absolute; top: 9px; right: 290px; display: none;">
                     <button type="button" title="Rotate 90° counter-clockwise" onclick="wpd.graphicsWidget.rotateCounterClockwise();" style="border:none; width:20px; font-size:16px; display:inline-flex; align-items:self-end; justify-content:center;">↺</button>
                     <button type="button" title="Rotate 90° clockwise" onclick="wpd.graphicsWidget.rotateClockwise();" style="border:none; width:20px; font-size:16px; display:inline-flex; align-items:self-end; justify-content:center;">↻</button>
                     <button type="button" title="Zoom in" onclick="wpd.graphicsWidget.zoomIn();" style="border:none; width:20px;">+</button>
@@ -259,7 +260,7 @@
 
             </div>
 
-            <div style="display: flex;">
+            <div style="display: flex; display: none;">
                 <div id="left-side-container" style="width:200px; flex: 0 0 169px;">
                     <!-- tree control -->
                     {% include "_tree.html" %}
@@ -277,13 +278,13 @@
                 </div>
             </div>
 
-            <div id="bottomContainer">
+            <div id="bottomContainer" style="display: none">
                 <div id="bottomNavbarContainer">{% include "_navbar.html" %}</div>
             </div>
         </div>
 
         <!-- sidebar + zoom -->
-        <div id="sidebarContainer">
+        <div id="sidebarContainer" style="display: none">
             <!-- zoom window goes here -->
             <div style="position:relative;" id="zoomDiv">
                 <canvas id="zoomCanvas" class="zoomLayers" width=250 height=250 style="position:relative; top: 0px; left: 0px; z-index:1;"></canvas>
