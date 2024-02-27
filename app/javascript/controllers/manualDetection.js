@@ -33,6 +33,10 @@ wpd.acquireData = (function() {
         } else {
             wpd.graphicsWidget.removeTool();
             wpd.graphicsWidget.resetData();
+            const diffractogram = document.getElementById('diffractogram');
+            diffractogram.style.visibility = 'visible';
+            diffractogram.style.opacity = '1';
+            
             showSidebar();
             wpd.autoExtraction.start();
             wpd.dataPointCounter.setCount();
@@ -77,9 +81,10 @@ wpd.acquireData = (function() {
         if (dataset.getCount() <= 0 && !dataset.hasPointGroups()) {
             return;
         }
-        wpd.okCancelPopup.show(wpd.gettext('clear-data-points'),
-            wpd.gettext('clear-data-points-text'), confirmedClearAll,
-            function() {});
+        confirmedClearAll();
+        // wpd.okCancelPopup.show(wpd.gettext('clear-data-points'),
+        //     wpd.gettext('clear-data-points-text'), confirmedClearAll,
+        //     function() {});
     }
 
     function undo() {

@@ -31,7 +31,7 @@ wpd.dataTable = (function() {
         selectedDataset = wpd.tree.getActiveDataset();
         selectedMeasurement = null;
         dataProvider.setDataSource(selectedDataset);
-        show();
+        // show();
     }
 
     function showAngleData() {

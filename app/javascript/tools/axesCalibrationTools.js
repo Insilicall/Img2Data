@@ -46,7 +46,9 @@ wpd.AxesCornersTool = (function() {
 
                 if (pointCount === _calibration.maxPointCount) {
                     isCapturingCorners = false;
-                    wpd.alignAxes.calibrationCompleted();
+                    // after the point selection skip the modal e go straight to x-y axis form
+                    // wpd.alignAxes.calibrationCompleted();
+                    wpd.alignAxes.getCornerValues();
                 }
 
                 wpd.graphicsWidget.updateZoomOnEvent(ev);

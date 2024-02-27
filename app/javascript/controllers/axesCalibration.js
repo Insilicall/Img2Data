@@ -46,7 +46,12 @@ wpd.XYAxesCalibrator = class extends wpd.AxesCalibrator {
     }
 
     getCornerValues() {
-        wpd.popup.show('xyAlignment');
+        // wpd.popup.show('xyAlignment');
+        const axisForm = document.getElementById("AxisForm");
+        axisForm.style.opacity = "1";
+        axisForm.style.visibility = "visible"
+        axisForm.style.height = "auto";
+
         if (this._isEditing) {
             let axes = wpd.tree.getActiveAxes();
             let prevCal = axes.calibration;

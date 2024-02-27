@@ -43,6 +43,37 @@
         pdfjsLib.GlobalWorkerOptions.workerSrc = "node_modules/pdfjs-dist/build/pdf.worker.js";
     </script>
     <script src="node_modules/tarballjs/tarball.js"></script>
+    <script>
+        function decrease(element_id) {
+            const element = document.getElementById(element_id);
+
+            element.value = parseInt(element.value) - 1;
+        }
+
+        function increase(element_id) {
+            const element = document.getElementById(element_id);
+
+            element.value = parseInt(element.value) + 1;
+        }
+
+        function increaseXPlot() {
+          const xStep = document.getElementById('algo-param-xStep');
+          const yStep = document.getElementById('algo-param-yStep');
+
+          xStep.value = parseInt(xStep.value) + 1;
+          yStep.value = parseInt(yStep.value) + 1;
+          this.wpd.algoManager.run()
+        }
+
+        function decreaseXPlot() {
+          const xStep = document.getElementById('algo-param-xStep');
+          const yStep = document.getElementById('algo-param-yStep');
+
+          xStep.value = xStep.value === "0" ? "0" : parseInt(xStep.value) - 1;
+          yStep.value = yStep.value === "0" ? "0" : parseInt(yStep.value) - 1;
+          this.wpd.algoManager.run()
+        }
+    </script>
 </head>
 
 <body>
@@ -53,7 +84,154 @@
         <br />
         {{ _("Problems loading? Make sure you have a recent version of Google Chrome, Firefox, Safari or Microsoft Edge installed.") }}
     </div>
-
+    <div class="d-flex flex-wrap">
+        <div id="AxisForm" style="opacity: 0; visibility: 0; transition: .3s ease-in-out; margin-top: 15px; height: 0;" >
+          <div class="d-flex flex-wrap gap-10">
+              <div class="">
+                <div class="d-flex mb-2 position-relative">
+                  <div class="position-absolute label">
+                    Select Axis X1
+                  </div>
+                  <div class="minus" onclick="decrease('xmin')">
+                    <span>
+                      <div class="minus-icon">
+                      </div>
+                    </span>
+                  </div>
+                  <input class="axis-input" type="text" size="8" id="xmin" value="0" onfocus="wpd.alignAxes.zoomCalPoint(0);" />
+                  <div class="plus" onclick="increase('xmin')">
+                    <span>
+                      +
+                    </span>
+                  </div>
+                </div>
+  
+                <div class="d-flex position-relative">
+                  <div class="position-absolute label">
+                    Select Axis X2
+                  </div>
+                  <div class="minus" onclick="decrease('xmax')">
+                    <span>
+                      <div class="minus-icon">
+                      </div>
+                    </span>
+                  </div>
+                  <input class="axis-input" type="text" size="8" id="xmax" value="0" onfocus="wpd.alignAxes.zoomCalPoint(0);" />
+                  <div class="plus" onclick="increase('xmax')">
+                    <span>
+                      +
+                    </span>
+                  </div>
+                  <div style="opacity: 0" align="center">
+                    <input type="checkbox" id="xlog">
+                  </div>
+                </div>
+              </div>
+  
+              <div class="d-flex">
+                <div class="">
+                  <div class="d-flex mb-2 position-relative">
+                    <div class="position-absolute label">
+                      Select Axis Y1
+                    </div>
+                    <div class="minus" onclick="decrease('ymin')">
+                      <span>
+                        <div class="minus-icon">
+                        </div>
+                      </span>
+                    </div>
+                    <input class="axis-input" type="text" size="8" id="ymin" value="0" onfocus="wpd.alignAxes.zoomCalPoint(2);" />
+                    <div class="plus" onclick="increase('ymin')">
+                      <span>
+                        +
+                      </span>
+                    </div>
+                  </div>
+  
+                  <div class="d-flex position-relative">
+                    <div class="position-absolute label">
+                      Select Axis Y2
+                    </div>
+                    <div class="minus" onclick="decrease('ymax')">
+                      <span>
+                        <div class="minus-icon">
+                        </div>
+                      </span>
+                    </div>
+                    <input class="axis-input" type="text" size="8" id="ymax" value="0" onfocus="wpd.alignAxes.zoomCalPoint(0);" />
+                    <div class="plus" onclick="increase('ymax')">
+                        <span>
+                          +
+                        </span>
+                    </div>
+                    <div style="opacity: 0" align="center"><input type="checkbox" id="ylog" /></div>
+  
+                  </div>
+                  <p style="opacity: 0; display: none;" align="center"><label><input type="checkbox" id="xy-axes-no-rotation"/>Assume axes are perfectly aligned with image coordinates (skip rotation correction)</label></p>
+                  <p style="text-align: left;" align="center"><input type="button" class="xybtn" id="xybtn" value="Start" onclick="wpd.alignAxes.align();" /></p>
+  
+                </div>
+  
+              </div>
+          </div>
+          <!-- <center >
+              <table style="border: 1px solid blue; margin-left: 0; margin-right: auto" padding="10">
+                  <tr>
+                      <td></td>
+                      <td align="center" valign="bottom">Point 1</td>
+                      <td align="center" valign="bottom" width="80">Point 2</td>
+                      <td style="opacity: 0" align="center" valign="bottom" width="82">Log Scale</td>
+                  </tr>
+                  <tr>
+                      <td align="center">X-Axis:</td>
+                      <td class="d-flex" align="center">
+                        <div class="minus">
+                          -
+                        </div>
+                        <input class="axis-input" type="text" size="8" id="xmin" value="0" onfocus="wpd.alignAxes.zoomCalPoint(0);" />
+                        <div class="plus">
+                          +
+                        </div>
+                      </td>
+                      <td align="center">
+                        <input class="axis-input" type="text" size="8" id="xmax" value="1" onfocus="wpd.alignAxes.zoomCalPoint(1);" />
+                      </td>
+                      <td style="opacity: 0" align="center">
+                        <input type="checkbox" id="xlog">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td align="center">Y-Axis:</td>
+                      <td align="center"><input class="axis-input" type="text" size="8" id="ymin" value="0" onfocus="wpd.alignAxes.zoomCalPoint(2);" /></td>
+                      <td align="center"><input class="axis-input" type="text" size="8" id="ymax" value="1" onfocus="wpd.alignAxes.zoomCalPoint(3);" /></td>
+                      <td style="opacity: 0" align="center"><input type="checkbox" id="ylog" /></td>
+                  </tr>
+              </table>
+              <p style="opacity: 0; display: none;" align="center"><label><input type="checkbox" id="xy-axes-no-rotation"/>Assume axes are perfectly aligned with image coordinates (skip rotation correction)</label></p>
+              <p style="text-align: left;" align="center"><input type="button" id="xybtn" value="OK" onclick="wpd.alignAxes.align();" /></p>
+          </center> -->
+        </div>
+  
+        <div id="diffractogram" class="d-flex select-diffractorgram">
+          <button id="select-view" class="box-shadow" onclick="wpd.gridDetection.markBox();">
+            <img src="../web-plot-digitizer/images/icon/select-window.svg" alt="">
+          </button>
+          <button id="reset-btn" class="box-shadow" onclick="wpd.acquireData.clearAll();">
+            <img src="../web-plot-digitizer/images/icon/reset-icon.svg" alt="">
+          </button>
+          <div class="minus box-shadow" onclick="decreaseXPlot()">
+            <span>
+              <div class="minus-icon">
+              </div>
+            </span>
+          </div>
+          <div class="plus box-shadow" onclick="increaseXPlot()">
+            <span>
+              +
+            </span>
+          </div>
+        </div>
+      </div>
     <div id="allContainer">
         <!-- toolbar + graphics -->
         <div id="mainContainer">
