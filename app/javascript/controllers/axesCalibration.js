@@ -481,6 +481,13 @@ wpd.alignAxes = (function() {
         }
         wpd.sidebar.clear();
         wpd.tree.refresh();
+        const axisForm = document.getElementById('AxisForm');
+        axisForm.style.visibility = "hidden";
+        axisForm.style.opacity = "0";
+        axisForm.style.height = "0";
+        axisForm.style.width = "0";
+        axisForm.style.display = "none";
+
         let dsNameColl = wpd.appData.getPlotData().getDatasetNames();
         if (dsNameColl.length > 0) {
             let dsName = dsNameColl[0];

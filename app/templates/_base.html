@@ -32,6 +32,7 @@
     <meta http-equiv="Expires" content="0" />
     <title>WebPlotDigitizer - Copyright 2010-2024 Ankit Rohatgi</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="styles.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="insilicall-buttons.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="widgets.css" type="text/css" media="screen" />
@@ -87,6 +88,10 @@
     </div>
     <div class="d-flex flex-wrap">
         <div id="AxisForm" style="opacity: 0; visibility: 0; transition: .3s ease-in-out; margin-top: 15px; height: 0;" >
+          <h3>Insert the value of the
+            <br>
+            X-Y pins
+          </h3>
           <div class="d-flex flex-wrap gap-10">
               <div class="">
                 <div class="d-flex mb-2 position-relative">
@@ -170,7 +175,6 @@
                   </div>
                   <p style="opacity: 0; display: none;" align="center"><label><input type="checkbox" id="xy-axes-no-rotation"/>Assume axes are perfectly aligned with image coordinates (skip rotation correction)</label></p>
                   <p style="text-align: left;" align="center"><input type="button" class="xybtn" id="xybtn" value="Start" onclick="wpd.alignAxes.align();" /></p>
-  
                 </div>
   
               </div>
@@ -212,24 +216,54 @@
               <p style="text-align: left;" align="center"><input type="button" id="xybtn" value="OK" onclick="wpd.alignAxes.align();" /></p>
           </center> -->
         </div>
-  
-        <div id="diffractogram" class="d-flex select-diffractorgram">
-          <button id="select-view" class="box-shadow" onclick="wpd.gridDetection.markBox();">
-            <img src="../web-plot-digitizer/images/icon/select-window.svg" alt="">
-          </button>
-          <button id="reset-btn" class="box-shadow" onclick="wpd.acquireData.clearAll();">
-            <img src="../web-plot-digitizer/images/icon/reset-icon.svg" alt="">
-          </button>
-          <div class="minus box-shadow" onclick="decreaseXPlot()">
-            <span>
-              <div class="minus-icon">
+        <div class="d-flex">
+          <div id="diffractogram" class="d-flex">
+            <div class="position-relative">
+              <button class="box-shadow btn-picker" onclick="wpd.colorPicker.startPicker(); wpd.colorSelectionWidget.pickColor();">
+                <i class="bi bi-eyedropper"></i>
+              </button>
+              <div class="hidden-legend picker-legend">
+                  Select plot line
+                  <div class="triangle-up"></div>
               </div>
-            </span>
+            </div>
+            <div id="diffractogram-selectors" class="d-flex">
+              <div class="position-relative">
+                <button id="select-view" class="box-shadow" onclick="wpd.dataMask.markBox();">
+                  <img src="../img2data/images/icon/select-window.svg" alt="">
+                </button>
+                <div class="hidden-legend select-legend">
+                  Select area
+                  <div class="triangle-up"></div>
+                </div>
+              </div>
+              <div class="position-relative">
+                <button id="reset-btn" class="box-shadow" onclick="wpd.acquireData.clearAll(); wpd.dataMask.clearMask(); wpd.dataMask.unMarkButton();">
+                  <img src="../img2data/images/icon/reset-icon.svg" alt="">
+                </button>
+                <div class="hidden-legend reset-legend">
+                  Reset
+                  <div class="triangle-up"></div>
+                </div>
+              </div>
+              <div class="minus box-shadow" onclick="increaseXPlot(); wpd.dataMask.unMarkButton();">
+                <span>
+                  <div class="minus-icon">
+                  </div>
+                </span>
+              </div>
+              <div class="plus box-shadow" onclick="decreaseXPlot(); wpd.dataMask.unMarkButton();">
+                <span>
+                  +
+                </span>
+              </div>
+              <div class="run-btn box-shadow" onclick="wpd.algoManager.run(); wpd.dataMask.unMarkButton();">
+                RUN
+              </div>
+            </div>
           </div>
-          <div class="plus box-shadow" onclick="increaseXPlot()">
-            <span>
-              +
-            </span>
+          <div class="picker-selected">
+            Line Color Selected !
           </div>
         </div>
       </div>

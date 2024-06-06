@@ -215,7 +215,16 @@ wpd.dataMask = (function() {
 
     function markBox() {
         let tool = new wpd.BoxMaskTool();
+        const picker = document.querySelector('.btn-picker');
+        picker.style.backgroundColor = "#fff";
+        const areaSelector = document.getElementById('select-view');
+        areaSelector.style.backgroundColor = "#9a2022";
         wpd.graphicsWidget.setTool(tool);
+    }
+
+    function unMarkButton() {
+        const areaSelector = document.getElementById('select-view');
+        areaSelector.style.backgroundColor = "#FC4E51";
     }
 
     function markPen() {
@@ -244,6 +253,7 @@ wpd.dataMask = (function() {
         markPen: markPen,
         eraseMarks: eraseMarks,
         viewMask: viewMask,
-        clearMask: clearMask
+        clearMask: clearMask,
+        unMarkButton: unMarkButton
     };
 })();

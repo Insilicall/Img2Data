@@ -33,9 +33,10 @@ wpd.acquireData = (function() {
         } else {
             wpd.graphicsWidget.removeTool();
             wpd.graphicsWidget.resetData();
-            const diffractogram = document.getElementById('diffractogram');
-            diffractogram.style.visibility = 'visible';
-            diffractogram.style.opacity = '1';
+
+            const selectors = document.getElementById('diffractogram');
+            selectors.style.visibility = 'visible';
+            selectors.style.opacity = '1';
             
             showSidebar();
             wpd.autoExtraction.start();

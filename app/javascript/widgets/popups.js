@@ -165,7 +165,7 @@ wpd.busyNote = (function() {
         if (noteDiv == null) {
             noteDiv = document.createElement('div');
             noteDiv.id = 'wait';
-            noteDiv.innerHTML = '<p align="center">' + wpd.gettext('processing') + '...</p>';
+            // noteDiv.innerHTML = '<p align="center">' + wpd.gettext('processing') + '...</p>';
         }
         document.body.appendChild(noteDiv);
         isVisible = true;

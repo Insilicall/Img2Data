@@ -79,11 +79,32 @@ wpd.colorSelectionWidget = (function() {
     function pickColor() {
         wpd.popup.close('color-selection-widget');
         let tool = new wpd.ColorPickerTool();
+        
+        const picker = document.querySelector('.btn-picker');
+        const pickerMsg = document.querySelector('.picker-selected');
+        const selectors = document.getElementById('diffractogram-selectors');
+        const areaSelector = document.getElementById('select-view');
+
+        areaSelector.style.backgroundColor = "#FC4E51";
+        picker.style.backgroundColor = "#aaa";
+
         tool.onComplete = function(col) {
             color = col;
             setColorDelegate(col);
             wpd.graphicsWidget.removeTool();
             startPicker();
+            setColor();
+            
+            selectors.style.visibility = 'visible';
+            selectors.style.opacity = '1';
+            picker.style.backgroundColor = "#fff";
+            pickerMsg.style.visibility = "visible";
+            pickerMsg.style.opacity = "1";
+
+            setTimeout(()=> {
+                pickerMsg.style.visibility = "hidden";
+                pickerMsg.style.opacity = "0";
+            },1000)
         };
         wpd.graphicsWidget.setTool(tool);
     }

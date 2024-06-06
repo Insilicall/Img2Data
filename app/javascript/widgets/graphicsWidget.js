@@ -179,7 +179,24 @@ wpd.graphicsWidget = (function() {
         mainCtx.fillStyle = "rgb(255, 255, 255)";
         mainCtx.fillRect(0, 0, dx, dy);
         mainCtx.drawImage($oriImageCanvas, 0, 0, dx, dy);
+        // let imageData = mainCtx.getImageData(0, 0, dx, dy);
+        // let data = imageData.data;
 
+        // for (let i = 0; i < data.length; i += 4) {
+        //     // Get the red, green, and blue values
+        //     let r = data[i];
+        //     let g = data[i + 1];
+        //     let b = data[i + 2];
+
+        //     // Calculate the grayscale value using the luminosity method
+        //     let gray = 0.3 * r + 0.59 * g + 0.11 * b;
+
+        //     // Set the red, green, and blue channels to the grayscale value
+        //     data[i] = data[i + 1] = data[i + 2] = gray;
+        // }
+
+        // // Put the modified image data back onto the canvas
+        // mainCtx.putImageData(imageData, 0, 0);
         if (repaintHandler != null && repaintHandler.onRedraw != undefined) {
             repaintHandler.onRedraw();
         }
