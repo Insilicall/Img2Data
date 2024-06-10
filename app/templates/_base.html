@@ -86,138 +86,142 @@
         <br />
         {{ _("Problems loading? Make sure you have a recent version of Google Chrome, Firefox, Safari or Microsoft Edge installed.") }}
     </div>
+    <div id="pick-tip" style="opacity: 1; transition: .3s ease-in-out;">
+      <h3>
+        Start picking X-Y chart axis.
+      </h3>
+    </div>
     <div class="d-flex flex-wrap">
-        <div id="AxisForm" style="opacity: 0; visibility: 0; transition: .3s ease-in-out; margin-top: 15px; height: 0;" >
-          <h3>Insert the value of the
-            <br>
-            X-Y pins
-          </h3>
-          <div class="d-flex flex-wrap gap-10">
-              <div class="">
-                <div class="d-flex mb-2 position-relative">
-                  <div class="position-absolute label">
-                    Select Axis X1
-                  </div>
-                  <div class="minus" onclick="decrease('xmin')">
-                    <span>
-                      <div class="minus-icon">
-                      </div>
-                    </span>
-                  </div>
-                  <input class="axis-input" type="text" size="8" id="xmin" value="0" onfocus="wpd.alignAxes.zoomCalPoint(0);" />
-                  <div class="plus" onclick="increase('xmin')">
-                    <span>
-                      +
-                    </span>
-                  </div>
-                </div>
-  
-                <div class="d-flex position-relative">
-                  <div class="position-absolute label">
-                    Select Axis X2
-                  </div>
-                  <div class="minus" onclick="decrease('xmax')">
-                    <span>
-                      <div class="minus-icon">
-                      </div>
-                    </span>
-                  </div>
-                  <input class="axis-input" type="text" size="8" id="xmax" value="0" onfocus="wpd.alignAxes.zoomCalPoint(0);" />
-                  <div class="plus" onclick="increase('xmax')">
-                    <span>
-                      +
-                    </span>
-                  </div>
-                  <div style="opacity: 0" align="center">
-                    <input type="checkbox" id="xlog">
-                  </div>
-                </div>
+      <div id="AxisForm" style="opacity: 0; visibility: 0; transition: .3s ease-in-out; height: 0;" >
+        <h3>Insert the value of the
+          X-Y pins
+        </h3>
+        <div class="d-flex gap-10 axis-box" style="width: 90%;">
+          <div class="d-flex gap-10">
+            <div class="d-flex position-relative">
+              <div class="position-absolute label">
+                Axis X1
               </div>
-  
-              <div class="d-flex">
-                <div class="">
-                  <div class="d-flex mb-2 position-relative">
-                    <div class="position-absolute label">
-                      Select Axis Y1
-                    </div>
-                    <div class="minus" onclick="decrease('ymin')">
-                      <span>
-                        <div class="minus-icon">
-                        </div>
-                      </span>
-                    </div>
-                    <input class="axis-input" type="text" size="8" id="ymin" value="0" onfocus="wpd.alignAxes.zoomCalPoint(2);" />
-                    <div class="plus" onclick="increase('ymin')">
-                      <span>
-                        +
-                      </span>
-                    </div>
+              <div class="minus" onclick="decrease('xmin')">
+                <span>
+                  <div class="minus-icon">
                   </div>
-  
-                  <div class="d-flex position-relative">
-                    <div class="position-absolute label">
-                      Select Axis Y2
-                    </div>
-                    <div class="minus" onclick="decrease('ymax')">
-                      <span>
-                        <div class="minus-icon">
-                        </div>
-                      </span>
-                    </div>
-                    <input class="axis-input" type="text" size="8" id="ymax" value="0" onfocus="wpd.alignAxes.zoomCalPoint(0);" />
-                    <div class="plus" onclick="increase('ymax')">
-                        <span>
-                          +
-                        </span>
-                    </div>
-                    <div style="opacity: 0" align="center"><input type="checkbox" id="ylog" /></div>
-  
-                  </div>
-                  <p style="opacity: 0; display: none;" align="center"><label><input type="checkbox" id="xy-axes-no-rotation"/>Assume axes are perfectly aligned with image coordinates (skip rotation correction)</label></p>
-                  <p style="text-align: left;" align="center"><input type="button" class="xybtn" id="xybtn" value="Start" onclick="wpd.alignAxes.align();" /></p>
-                </div>
-  
+                </span>
               </div>
+              <input class="axis-input" type="number" size="8" id="xmin" value="0" onfocus="wpd.alignAxes.zoomCalPoint(0);" />
+              <div class="plus" onclick="increase('xmin')">
+                <span>
+                  +
+                </span>
+              </div>
+            </div>
+
+            <div class="d-flex position-relative">
+              <div class="position-absolute label">
+                Axis X2
+              </div>
+              <div class="minus" onclick="decrease('xmax')">
+                <span>
+                  <div class="minus-icon">
+                  </div>
+                </span>
+              </div>
+              <input class="axis-input" type="number" size="8" id="xmax" value="0" onfocus="wpd.alignAxes.zoomCalPoint(0);" />
+              <div class="plus" onclick="increase('xmax')">
+                <span>
+                  +
+                </span>
+              </div>
+              <div style="opacity: 0; height: 0" align="center">
+                <input type="checkbox" id="xlog">
+              </div>
+            </div>
           </div>
-          <!-- <center >
-              <table style="border: 1px solid blue; margin-left: 0; margin-right: auto" padding="10">
-                  <tr>
-                      <td></td>
-                      <td align="center" valign="bottom">Point 1</td>
-                      <td align="center" valign="bottom" width="80">Point 2</td>
-                      <td style="opacity: 0" align="center" valign="bottom" width="82">Log Scale</td>
-                  </tr>
-                  <tr>
-                      <td align="center">X-Axis:</td>
-                      <td class="d-flex" align="center">
-                        <div class="minus">
-                          -
-                        </div>
-                        <input class="axis-input" type="text" size="8" id="xmin" value="0" onfocus="wpd.alignAxes.zoomCalPoint(0);" />
-                        <div class="plus">
-                          +
-                        </div>
-                      </td>
-                      <td align="center">
-                        <input class="axis-input" type="text" size="8" id="xmax" value="1" onfocus="wpd.alignAxes.zoomCalPoint(1);" />
-                      </td>
-                      <td style="opacity: 0" align="center">
-                        <input type="checkbox" id="xlog">
-                      </td>
-                  </tr>
-                  <tr>
-                      <td align="center">Y-Axis:</td>
-                      <td align="center"><input class="axis-input" type="text" size="8" id="ymin" value="0" onfocus="wpd.alignAxes.zoomCalPoint(2);" /></td>
-                      <td align="center"><input class="axis-input" type="text" size="8" id="ymax" value="1" onfocus="wpd.alignAxes.zoomCalPoint(3);" /></td>
-                      <td style="opacity: 0" align="center"><input type="checkbox" id="ylog" /></td>
-                  </tr>
-              </table>
+
+          <div class="d-flex">
+            <div class="d-flex gap-10">
+              <div class="d-flex position-relative">
+                <div class="position-absolute label">
+                  Axis Y1
+                </div>
+                <div class="minus" onclick="decrease('ymin')">
+                  <span>
+                    <div class="minus-icon">
+                    </div>
+                  </span>
+                </div>
+                <input class="axis-input" type="number" size="8" id="ymin" value="0" onfocus="wpd.alignAxes.zoomCalPoint(2);" />
+                <div class="plus" onclick="increase('ymin')">
+                  <span>
+                    +
+                  </span>
+                </div>
+              </div>
+
+              <div class="d-flex position-relative">
+                <div class="position-absolute label">
+                  Axis Y2
+                </div>
+                <div class="minus" onclick="decrease('ymax')">
+                  <span>
+                    <div class="minus-icon">
+                    </div>
+                  </span>
+                </div>
+                <input class="axis-input" type="number" size="8" id="ymax" value="0" onfocus="wpd.alignAxes.zoomCalPoint(0);" />
+                <div class="plus" onclick="increase('ymax')">
+                    <span>
+                      +
+                    </span>
+                </div>
+                <div style="opacity: 0; height: 0" align="center"><input type="checkbox" id="ylog" /></div>
+
+              </div>
               <p style="opacity: 0; display: none;" align="center"><label><input type="checkbox" id="xy-axes-no-rotation"/>Assume axes are perfectly aligned with image coordinates (skip rotation correction)</label></p>
-              <p style="text-align: left;" align="center"><input type="button" id="xybtn" value="OK" onclick="wpd.alignAxes.align();" /></p>
-          </center> -->
-        </div>
-        <div class="d-flex">
-          <div id="diffractogram" class="d-flex">
+              <p style="text-align: left;" align="center"><input type="button" class="xybtn" id="xybtn" value="Start" onclick="wpd.alignAxes.align();" /></p>
+            </div>
+
+          </div>
+      </div>
+        <!-- <center >
+            <table style="border: 1px solid blue; margin-left: 0; margin-right: auto" padding="10">
+                <tr>
+                    <td></td>
+                    <td align="center" valign="bottom">Point 1</td>
+                    <td align="center" valign="bottom" width="80">Point 2</td>
+                    <td style="opacity: 0" align="center" valign="bottom" width="82">Log Scale</td>
+                </tr>
+                <tr>
+                    <td align="center">X-Axis:</td>
+                    <td class="d-flex" align="center">
+                      <div class="minus">
+                        -
+                      </div>
+                      <input class="axis-input" type="text" size="8" id="xmin" value="0" onfocus="wpd.alignAxes.zoomCalPoint(0);" />
+                      <div class="plus">
+                        +
+                      </div>
+                    </td>
+                    <td align="center">
+                      <input class="axis-input" type="text" size="8" id="xmax" value="1" onfocus="wpd.alignAxes.zoomCalPoint(1);" />
+                    </td>
+                    <td style="opacity: 0" align="center">
+                      <input type="checkbox" id="xlog">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">Y-Axis:</td>
+                    <td align="center"><input class="axis-input" type="text" size="8" id="ymin" value="0" onfocus="wpd.alignAxes.zoomCalPoint(2);" /></td>
+                    <td align="center"><input class="axis-input" type="text" size="8" id="ymax" value="1" onfocus="wpd.alignAxes.zoomCalPoint(3);" /></td>
+                    <td style="opacity: 0" align="center"><input type="checkbox" id="ylog" /></td>
+                </tr>
+            </table>
+            <p style="opacity: 0; display: none;" align="center"><label><input type="checkbox" id="xy-axes-no-rotation"/>Assume axes are perfectly aligned with image coordinates (skip rotation correction)</label></p>
+            <p style="text-align: left;" align="center"><input type="button" id="xybtn" value="OK" onclick="wpd.alignAxes.align();" /></p>
+        </center> -->
+      </div>
+        <div id="diffractogram-box" style="height: 0" class="d-flex">
+          <div  id="diffractogram" class="d-flex">
             <div class="position-relative">
               <button class="box-shadow btn-picker" onclick="wpd.colorPicker.startPicker(); wpd.colorSelectionWidget.pickColor();">
                 <i class="bi bi-eyedropper"></i>
