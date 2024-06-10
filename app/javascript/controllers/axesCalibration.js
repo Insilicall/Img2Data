@@ -48,6 +48,12 @@ wpd.XYAxesCalibrator = class extends wpd.AxesCalibrator {
     getCornerValues() {
         // wpd.popup.show('xyAlignment');
         const axisForm = document.getElementById("AxisForm");
+        const pickTip = document.getElementById("pick-tip");
+
+        pickTip.style.opacity = "0";
+        pickTip.style.height = "0";
+        pickTip.style.visibility = "hidden";
+        
         axisForm.style.opacity = "1";
         axisForm.style.visibility = "visible"
         axisForm.style.height = "auto";

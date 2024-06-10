@@ -35,6 +35,9 @@ wpd.acquireData = (function() {
             wpd.graphicsWidget.resetData();
 
             const selectors = document.getElementById('diffractogram');
+            const selectorBox = document.getElementById('diffractogram-box');
+
+            selectorBox.style.height = "auto";
             selectors.style.visibility = 'visible';
             selectors.style.opacity = '1';
             
